@@ -47,9 +47,13 @@ If you'd like to include images to show how the pipeline works, here is how to i
 **Output Images**
 
 ![alt text][image1]
+
 ![alt text][image2]
+
 ![alt text][image3]
+
 ![alt text][image4]
+
 ![alt text][image5]
 
 **Output Videos**
