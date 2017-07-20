@@ -32,9 +32,9 @@ The goals / steps of this project are the following:
 * Region of interest
 * Hough transform
 
-My pipeline consisted of 5 steps. First, I converted the images to grayscale. Second, I used gaussian filter with kernel size 11x11 to make the image look smoother than the original gray-scaled image. Third, the filtered image is passed to Canny edge detection function to find edge lines of the image. Fourth, the edge line image is passed to the region of interest. Fifth, the masked image is passed to hough transform, then generates the output image.
+My pipeline consists of 5 steps. First, the image is converted to grayscale. Second, it is passed to gaussian filter with kernel size 11x11 to make it look smoother than the original gray-scaled image. Third, the filtered image is passed to Canny edge detection function to find edge lines. Fourth, the edge line image is passed to the region of interest. Fifth, the masked image is passed to hough transform, then generates the output image.
 
-Instead of writing messy code in "draw_lines()"(draw_lines2() in my code) function, I created "averaging()" and "form_line()" functions. "averaging()" function takes all the linear lines of each frames and finds average of the slope and intercept of left and right lines. "form_line()" function calls "averaging()" to generate extrapolated linear lines for both left and right lanes.
+I created "averaging()" and "form_line()" functions, besides the draw_lines() function. "averaging()" function takes all the linear lines and finds average of the slope and intercept of left and right lines of each frames . "form_line()" function calls "averaging()" to generate extrapolated linear lines for both left and right lanes.
 Below are averaging() and form_line():
 
 **averaging()**
@@ -106,7 +106,7 @@ def form_line(img, lines):
 
         return ((x1_left,y1),(x2_left,y2)), ((x1_right,y1),(x2_right,y2)) #left_line, right_line
 ~~~~
-Then I pass the left_line and the right_line to draw_line2() functions as shown below
+Then, I pass left_line and right_line to draw_line2() function in pipeline as shown below
 
 ~~~~
 # Hough transform
@@ -116,7 +116,7 @@ left_line, right_line = form_line(image,lines)
 result = draw_lines2(image, (left_line,right_line))
 ~~~~
 
-And draw_lines2() function returns the final image after blending the original image with the line-masked image
+draw_lines2() function returns the final image after weighting the original image with the line-masked image
 
 ~~~~
 def draw_lines2(img, lines, color=[255, 0, 0], thickness=15):
