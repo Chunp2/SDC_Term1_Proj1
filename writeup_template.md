@@ -44,11 +44,11 @@ In order to draw lines on the image, I created "averaging()" and "form_line()" f
 
 If you'd like to include images to show how the pipeline works, here is how to include an image:
 
-1.![alt text][image1]
-2.![alt text][image2]
-3.![alt text][image3]
-4.![alt text][image4]
-5.![alt text][image5]
+![alt text][image1]
+![alt text][image2]
+![alt text][image3]
+![alt text][image4]
+![alt text][image5]
 
 
 ### 2. Identify potential shortcomings with your current pipeline
