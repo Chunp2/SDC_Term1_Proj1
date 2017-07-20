@@ -102,7 +102,7 @@ def form_line(img, lines):
         x2_right = int(x2_right)
 
         return ((x1_left,y1),(x2_left,y2)), ((x1_right,y1),(x2_right,y2)) #left_line, right_line
-
+'''
 
 **Functions used in order**
 * Conversion to grayscale
