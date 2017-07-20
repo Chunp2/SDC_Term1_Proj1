@@ -36,9 +36,9 @@ Below are averaging() and form_line():
 averaging()
 '''python
 def averaging(lines):
-    """
-    This function finds average slope and intercept of lines in a frame.
-    """
+
+    #This function finds average slope and intercept of lines in a frame.
+
     left_slope = []
     left_intercept = []
     right_slope = []
@@ -76,9 +76,9 @@ def averaging(lines):
 form_line()
 '''python
 def form_line(img, lines):
-    """
-        This function creates a linear line from avg_slope and avg_inetercept.
-    """
+
+    #This function creates a linear line from avg_slope and avg_inetercept.
+
     if averaging(lines) is None:
         return None
     else:
@@ -102,7 +102,7 @@ def form_line(img, lines):
         x2_right = int(x2_right)
 
         return ((x1_left,y1),(x2_left,y2)), ((x1_right,y1),(x2_right,y2)) #left_line, right_line
-    
+
 
 **Functions used in order**
 * Conversion to grayscale
