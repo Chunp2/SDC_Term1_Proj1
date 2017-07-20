@@ -35,7 +35,7 @@ Instead of writing messy code in "draw_lines()"(draw_lines2() in my code) functi
 Below are averaging() and form_line():
 
 averaging()
-'''python
+~~~~
 def averaging(lines):
     #This function finds average slope and intercept of lines in a frame.
     left_slope = []
@@ -71,11 +71,11 @@ def averaging(lines):
         return avg_left_slope,avg_left_intercept,avg_right_slope,avg_right_intercept
     else:
         return None
-'''
+~~~~
 
 **form_line()**
 
-'''python
+~~~~
 
 def form_line(img, lines):
     #This function creates a linear line from avg_slope and avg_inetercept.
@@ -102,7 +102,7 @@ def form_line(img, lines):
         x2_right = int(x2_right)
 
         return ((x1_left,y1),(x2_left,y2)), ((x1_right,y1),(x2_right,y2)) #left_line, right_line
-'''
+~~~~
 
 **Functions used in order**
 * Conversion to grayscale
