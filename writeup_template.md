@@ -1,9 +1,5 @@
 # **Finding Lane Lines on the Road**
-
-## Writeup Template
-
-### You can use this file as a template for your writeup if you want to submit it as a markdown file. But feel free to use some other method and submit a pdf if you prefer.
-
+**Author: Paul Chun**
 ---
 
 **Finding Lane Lines on the Road**
@@ -29,12 +25,19 @@ The goals / steps of this project are the following:
 
 ### 1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
 
+**Pipeline**
+* Conversion to grayscale
+* Gaussian filter
+* Canny edge detection
+* Region of interest
+* Hough transform
+
 My pipeline consisted of 5 steps. First, I converted the images to grayscale. Second, I used gaussian filter with kernel size 11x11 to make the image look smoother than the original image. Third, the filtered image is passed to Canny edge detection function to find edge lines of the image. Fourth, the edge line image is passed to the region of interest. Fifth, the masked image is passed to hough transform, then generates the output image.
 
 Instead of writing messy code in "draw_lines()"(draw_lines2() in my code) function, I created "averaging()" and "form_line()" functions. "averaging()" function takes all the linear lines of each frames and finds average of the slope and intercept of left and right lines. "form_line()" function calls "averaging()" to generate extrapolated linear lines for both left and right lanes.
 Below are averaging() and form_line():
 
-averaging()
+**averaging()**
 ~~~~
 def averaging(lines):
     #This function finds average slope and intercept of lines in a frame.
@@ -103,15 +106,34 @@ def form_line(img, lines):
 
         return ((x1_left,y1),(x2_left,y2)), ((x1_right,y1),(x2_right,y2)) #left_line, right_line
 ~~~~
-
-**Functions used in order**
-* Conversion to grayscale
-* Gaussian filter
-* Canny edge detection
-* Region of interest
-* Hough transform
+Then I pass the left_line and right_line to draw_line2() functions as shown below
 
 Below shows the outputs of the functions listed above:
+~~~~
+# Hough transform
+left_line, right_line = form_line(image,lines)
+
+# Generate processed image
+result = draw_lines2(image, (left_line,right_line))
+~~~~
+
+And draw_lines2() function returns the final image after blending the original image with the line-masked image
+
+~~~~
+def draw_lines2(img, lines, color=[255, 0, 0], thickness=15):
+    """
+        This function draws generated linear lines on the original image.
+    """
+    #Black background with lines only
+    line_image = np.zeros_like(img)
+    #Draw lines on line_image
+    for line in lines:
+        if line is not None:
+            cv2.line(line_image, *line, color, thickness)
+
+    #return: image = original_image*1 + line_image*0.8
+    return weighted_img(line_image, img, α=1., β=0.8, λ=0.)
+~~~~
 
 **Output Images**
 
@@ -133,14 +155,8 @@ Below shows the outputs of the functions listed above:
 
 ### 2. Identify potential shortcomings with your current pipeline
 
-
-One potential shortcoming would be what would happen when ...
-
-Another shortcoming could be ...
+One potential shortcoming is that the averaging function does not work at the curve of lane lines. And another shortcoming could be when there is shadow on the road, the edge detection would produce unclear lines. This problem would fail in generating detect lines that fits on the lanes.
 
 
 ### 3. Suggest possible improvements to your pipeline
-
-A possible improvement would be to ...
-
-Another potential improvement could be to ...
+When the lane lines have inconsistent brightness, due to shadow, I would need to use color filter other than grayscale conversion filter. And possible solution for the curve lane problem, I could reduce the height of parallelogram mask in region of interest function, so that it would mask out the curved part of both left and right lanes, and I could extrapolate the lane lines later.
