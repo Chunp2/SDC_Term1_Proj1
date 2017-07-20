@@ -154,8 +154,8 @@ def draw_lines2(img, lines, color=[255, 0, 0], thickness=15):
 
 ### 2. Identify potential shortcomings with your current pipeline
 
-One potential shortcoming is that the averaging function does not work at the curve of lane lines. And another shortcoming could be when there is shadow on the road, the edge detection would produce unclear line images. This problem would fail to generate detect lines that fits on lanes.
+One potential shortcoming is that the averaging function would not work at the curve of lane lines. And another shortcoming is when there is shadow on the road, the edge detection would produce unclear line images. This problem would fail to generate detect-lines.
 
 
 ### 3. Suggest possible improvements to your pipeline
-When the lane lines have inconsistent brightness, due to shadow, I would need to use color filter other than grayscale conversion filter. And possible solution for the curve lane problem, I could reduce the height of parallelogram mask in region of interest function, so that it would mask out the curved part of both left and right lanes, and I could extrapolate the detect lines later.
+When the lane lines have inconsistent brightness, due to shadow, I would need to use color filter other than grayscale conversion filter. And possible solution for the curve lane problem can be reduce the height of parallelogram mask in region of interest function, so that it would mask out the curved part of both left and right lanes, and I could extrapolate the detect lines later.
