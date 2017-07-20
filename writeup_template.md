@@ -51,8 +51,7 @@ If you'd like to include images to show how the pipeline works, here is how to i
 ![alt text][image5]
 
 Video
-![IMAGE ALT TEXT HERE](https://www.youtube.com/watch?v=jTXmDoVTzYs&feature=youtu.be)
-
+[![image1](http://img.youtube.com/vi/https://youtu.be/jTXmDoVTzYs/0.jpg)](https://www.youtube.com/watch?v=jTXmDoVTzYs&feature=youtu.be)
 ### 2. Identify potential shortcomings with your current pipeline
 
 
