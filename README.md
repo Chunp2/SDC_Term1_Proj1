@@ -106,9 +106,8 @@ def form_line(img, lines):
 
         return ((x1_left,y1),(x2_left,y2)), ((x1_right,y1),(x2_right,y2)) #left_line, right_line
 ~~~~
-Then I pass the left_line and right_line to draw_line2() functions as shown below
+Then I pass the left_line and the right_line to draw_line2() functions as shown below
 
-Below shows the outputs of the functions listed above:
 ~~~~
 # Hough transform
 left_line, right_line = form_line(image,lines)
@@ -135,7 +134,7 @@ def draw_lines2(img, lines, color=[255, 0, 0], thickness=15):
     return weighted_img(line_image, img, α=1., β=0.8, λ=0.)
 ~~~~
 
-**Output Images**
+**Output Images of the pipeline functions**
 
 ![alt text][image1]
 
@@ -155,8 +154,8 @@ def draw_lines2(img, lines, color=[255, 0, 0], thickness=15):
 
 ### 2. Identify potential shortcomings with your current pipeline
 
-One potential shortcoming is that the averaging function does not work at the curve of lane lines. And another shortcoming could be when there is shadow on the road, the edge detection would produce unclear lines. This problem would fail in generating detect lines that fits on the lanes.
+One potential shortcoming is that the averaging function does not work at the curve of lane lines. And another shortcoming could be when there is shadow on the road, the edge detection would produce unclear line images. This problem would fail to generate detect lines that fits on lanes.
 
 
 ### 3. Suggest possible improvements to your pipeline
-When the lane lines have inconsistent brightness, due to shadow, I would need to use color filter other than grayscale conversion filter. And possible solution for the curve lane problem, I could reduce the height of parallelogram mask in region of interest function, so that it would mask out the curved part of both left and right lanes, and I could extrapolate the lane lines later.
+When the lane lines have inconsistent brightness, due to shadow, I would need to use color filter other than grayscale conversion filter. And possible solution for the curve lane problem, I could reduce the height of parallelogram mask in region of interest function, so that it would mask out the curved part of both left and right lanes, and I could extrapolate the detect lines later.
