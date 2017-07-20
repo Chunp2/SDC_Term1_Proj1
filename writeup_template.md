@@ -36,7 +36,6 @@ Below are averaging() and form_line():
 
 averaging()
 
-'''python
 
 def averaging(lines):
     #This function finds average slope and intercept of lines in a frame.
@@ -73,7 +72,7 @@ def averaging(lines):
         return avg_left_slope,avg_left_intercept,avg_right_slope,avg_right_intercept
     else:
         return None
-'''
+
 
 form_line()
 
