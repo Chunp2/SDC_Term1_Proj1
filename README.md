@@ -34,7 +34,7 @@ The goals / steps of this project are the following:
 
 My pipeline consists of 5 steps. First, the image is converted to grayscale. Second, it is passed to gaussian filter with kernel size 11x11 to make it look smoother than the original gray-scaled image. Third, the filtered image is passed to Canny edge detection function to find edge lines. Fourth, the edge line image is passed to the region of interest. Fifth, the masked image is passed to hough transform, then generates the output image.
 
-I created "averaging()" and "form_line()" functions, besides the draw_lines() function. "averaging()" function takes all the linear lines and finds average of the slope and intercept of left and right lines of each frames . "form_line()" function calls "averaging()" to generate extrapolated linear lines for both left and right lanes.
+I created "averaging()" and "form_line()" functions, in addition to the draw_lines() function. "averaging()" function takes all the linear lines and finds average of the slope and intercept of left and right lines of each frames . "form_line()" function calls "averaging()" to generate extrapolated linear lines for both left and right lanes.
 Below are averaging() and form_line():
 
 **averaging()**
